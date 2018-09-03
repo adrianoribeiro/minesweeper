@@ -2,4 +2,6 @@
 
 To run...
 
-iex(1)> Example.run(50, 10, 50)
+	$ iex -S mix
+
+	iex(1)> Example.run(50, 10, 50)

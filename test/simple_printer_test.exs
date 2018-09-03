@@ -32,7 +32,7 @@ defmodule SimplePrinterTest do
 		{width, height, mines} = {3, 2, [{2, 2}]}
 
 		result = Board.new(width, height, mines) 
-							|> SimplePrinter.print_board(width, xray: true)
+					|> SimplePrinter.print_board(width, xray: true)
 	
 		expected_result = [
 			[

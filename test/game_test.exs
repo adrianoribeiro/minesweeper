@@ -16,7 +16,7 @@ defmodule GameTest do
 		{width, height, mines} = {5, 4, [{2, 2}, {4, 3}]}
 		cell = Board.new(width, height, mines)
 				|> Game.click({1, 1}) 
-					|> Board.find_by_coord({1, 1})
+				|> Board.find_by_coord({1, 1})
 		assert cell.value == BoardFormat.board_format.clear_cell
 
 	end
@@ -30,8 +30,8 @@ defmodule GameTest do
 
 		clean_cells = board 
 			|> Enum.filter( fn cell -> cell.value == BoardFormat.board_format.clear_cell end) 
-				|> Enum.map(fn cell -> {cell.col, cell.row} end) 
-					|> Enum.sort 
+			|> Enum.map(fn cell -> {cell.col, cell.row} end) 
+			|> Enum.sort 
 
 		assert clean_cells == [{3, 1}, {3, 2}, {4, 1}, {4, 2}, {5, 1}, {5, 2}] 
 
@@ -46,8 +46,8 @@ defmodule GameTest do
 
 		clean_cells = board 
 			|> Enum.filter( fn cell -> cell.value == BoardFormat.board_format.clear_cell end) 
-				|> Enum.map(fn cell -> {cell.col, cell.row} end) 
-					|> Enum.sort 
+			|> Enum.map(fn cell -> {cell.col, cell.row} end) 
+			|> Enum.sort 
 
 		assert clean_cells == [{3, 1}] 
 
@@ -63,7 +63,7 @@ defmodule GameTest do
 		#Get all cells
 		all_cells = board 
 			|> Enum.filter( fn cell -> cell.value == BoardFormat.board_format.unknown_cell end) 
-				|> Enum.map(fn cell -> {cell.col, cell.row} end) 
+			|> Enum.map(fn cell -> {cell.col, cell.row} end) 
 
 		#Click
 		board = Game.click(board, {4, 1})
@@ -71,12 +71,12 @@ defmodule GameTest do
 		#Get all clean cells
 		clean_cells = board 
 			|> Enum.filter( fn cell -> cell.value == BoardFormat.board_format.clear_cell end) 
-				|> Enum.map(fn cell -> {cell.col, cell.row} end) 
+			|> Enum.map(fn cell -> {cell.col, cell.row} end) 
 
 		#Get the diff
 		result_cells = 
 				all_cells -- clean_cells 
-					|> Enum.sort
+				|> Enum.sort
 
 		assert result_cells == [{1, 1}, {1, 2}, {2, 1}]
 	end
@@ -91,7 +91,7 @@ defmodule GameTest do
 		#The flag isn't put yet
 		assert :false == Board.flag?(cell)
 		board = Board.new(width, height, mines)
-					|> Game.flag({1, 1})
+				|> Game.flag({1, 1})
 
 		cell = board |> Board.find_by_coord({1, 1})
 		assert :true == Board.flag?(cell)

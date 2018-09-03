@@ -10,7 +10,7 @@ defmodule BoardTest do
 		num_cells_generated = 
 			Board.new(width, height, mines) 
 				|> Enum.filter(fn cell -> cell.value == BoardFormat.board_format.unknown_cell end )
-					|> Enum.count
+				|> Enum.count
 
 		assert num_cells_generated == width*height
 
@@ -23,7 +23,7 @@ defmodule BoardTest do
 		board = Board.new(width, height, mines)
 		num_mines_generated = board 
 			|> Enum.filter(fn cell -> cell.bomb end )
-				|> Enum.count
+			|> Enum.count
 
 		assert num_mines_generated == 2
 
@@ -36,7 +36,7 @@ defmodule BoardTest do
 		board = Board.new(width, height, mines)
 		num_unknown_cell_generated = board 
 			|> Enum.filter(fn cell -> !cell.bomb end )
-				|> Enum.count
+			|> Enum.count
 
 		assert num_unknown_cell_generated == width * height - 3
 

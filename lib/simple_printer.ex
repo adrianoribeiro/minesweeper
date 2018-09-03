@@ -22,7 +22,7 @@ defmodule SimplePrinter do
 
 		board
 			|> get_col_value(xray: true)
-				|> Enum.chunk_every(width)
+			|> Enum.chunk_every(width)
 	end
 
 	@doc """
@@ -42,7 +42,7 @@ defmodule SimplePrinter do
 
 		board
 			|> get_col_value()
-				|> Enum.chunk_every(width)
+			|> Enum.chunk_every(width)
 	end	
 
 	@doc """
@@ -64,7 +64,7 @@ defmodule SimplePrinter do
 
 		board 
 			|> print_board(width, xray: true)
-				|> print_console(width)
+			|> print_console(width)
 	end
 
 	@doc """
@@ -84,7 +84,7 @@ defmodule SimplePrinter do
 
 		board
 			|> print_board(width)
-				|> print_console(width)
+			|> print_console(width)
 	end
 
 	def print_console([], width) do

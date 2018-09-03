@@ -8,7 +8,7 @@ defmodule PrettyPrinterTest do
 		{width, height, mines} = {3, 2, [{2, 2}]}
 
 		result = Board.new(width, height, mines) 
-							|> PrettyPrinter.print_board(width)
+				 |> PrettyPrinter.print_board(width)
 	
 		expected_result = [
 			[
@@ -40,7 +40,7 @@ defmodule PrettyPrinterTest do
 		{width, height, mines} = {3, 2, [{2, 2}]}
 
 		result = Board.new(width, height, mines) 
-							|> PrettyPrinter.print_board(width, xray: true)
+					|> PrettyPrinter.print_board(width, xray: true)
 	
 		expected_result = [
 			[
@@ -63,7 +63,7 @@ defmodule PrettyPrinterTest do
 			]
 		]
 		
-		assert expected_result  == result
+		assert expected_result == result
 
 	end
 

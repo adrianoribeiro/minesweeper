@@ -26,9 +26,9 @@ defmodule Board do
 		
 		all_coord = all_coord(board)
 
-		board |>
-			add_number_nearby_bombs(all_coord, mines, width, height)
-				|> add_neighbors(all_coord, mines, width, height)
+		board 
+			|> add_number_nearby_bombs(all_coord, mines, width, height)
+			|> add_neighbors(all_coord, mines, width, height)
 
 	end
 
@@ -66,7 +66,7 @@ defmodule Board do
 
 		cell 
 			|> Cell.change_attr([{:value, BoardFormat.board_format.flag }])
-				|> update_board(board)
+			|> update_board(board)
 
 	end
 
@@ -90,7 +90,7 @@ defmodule Board do
 
 		cell 
 			|> Cell.change_attr([{:value, BoardFormat.board_format.unknown_cell}])
-				|> update_board(board)
+			|> update_board(board)
 
 	end
 
@@ -205,8 +205,8 @@ defmodule Board do
 		
 		board 
 			|> Enum.filter( fn cell -> cell.bomb == :false end)
-				|> Enum.filter( fn cell -> cell.value == BoardFormat.board_format.unknown_cell || cell.value == BoardFormat.board_format.flag end )
-					|> Enum.empty?
+			|> Enum.filter( fn cell -> cell.value == BoardFormat.board_format.unknown_cell || cell.value == BoardFormat.board_format.flag end )
+			|> Enum.empty?
 
 	end	
 
@@ -222,11 +222,11 @@ defmodule Board do
 
 	end
 
-    defp add_bombs(board, []) do
+	defp add_bombs(board, []) do
 
-    	board
+		board
 
-    end
+	end
 
 	defp add_bombs(board, mines) do
 		
@@ -234,10 +234,10 @@ defmodule Board do
 
 		board = board 
 				|> find_by_coord(head)
-					|> Cell.change_attr([{:bomb, :true}])
-						|> update_board(board)
+				|> Cell.change_attr([{:bomb, :true}])
+				|> update_board(board)
 
-						add_bombs(board, tail)
+		add_bombs(board, tail)
 
 	end	
 
@@ -248,11 +248,11 @@ defmodule Board do
 
 	end
 
-    defp create_index(col, row, width) do
+	defp create_index(col, row, width) do
 
-    	(row - 1) * width + col
+		(row - 1) * width + col
 
-    end
+	end
 
 	defp add_number_nearby_bombs(board, [], mines, width, height) do
 
@@ -274,8 +274,8 @@ defmodule Board do
 
 			board = board 
 						|> find_by_coord({coord_x, coord_y})
-							|> Cell.change_attr([{:number_neighbors, number_nearby_bombs}])
-								|> update_board(board)
+						|> Cell.change_attr([{:number_neighbors, number_nearby_bombs}])
+						|> update_board(board)
 			
 			add_number_nearby_bombs(board, tail, mines, width, height)
 		else
@@ -304,7 +304,7 @@ defmodule Board do
 			neighbors = coord_neighbors(coord_x, coord_y, width, height)
 
 			board = Cell.change_attr(cell, [{:neighbors, neighbors}])
-						|> update_board(board)
+					|> update_board(board)
 
 			add_neighbors(board, tail, mines, width, height)
 
@@ -339,7 +339,7 @@ defmodule Board do
 	defp coord_neighbors(coord_x, coord_y, limit_width, limit_height) do
 
 		list = for col <- coord_x-1..coord_x+1,
-		      row <- coord_y-1..coord_y+1, do: {col, row}
+					row <- coord_y-1..coord_y+1, do: {col, row}
 
 		#Remove yourself
 		list = list -- [{coord_x, coord_y}]

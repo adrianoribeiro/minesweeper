@@ -17,7 +17,7 @@ defmodule Game do
 	## Examples
 
 		iex(1)> Game.init(2, 1, 1) \n
-					|> Game.play({2, 1}, {2, 1})       
+					|> Game.play({2, 1}, {2, 1})
 	"""	
 	def init(width, height, num_bombs) do
 
@@ -49,7 +49,7 @@ defmodule Game do
 	## Examples
 
 		iex(1)> Game.init(2, 1, 1) \n
-					|> Game.play({2, 1}, {2, 1})       
+					|> Game.play({2, 1}, {2, 1})
 
 	"""
 	def play(board, play_coordinates, flag_coordinates) do
@@ -156,7 +156,7 @@ defmodule Game do
 	## Examples
 
 		iex(1)> Game.init(2, 1, 1) \n
-					|> Game.play({2, 1}, {2, 1})       
+					|> Game.play({2, 1}, {2, 1})
 
 	"""
 	def flag(board, {coord_x, coord_y}) do
@@ -232,7 +232,7 @@ defmodule Game do
 
 		board = cell 
 			|> Cell.change_attr([{:value, BoardFormat.board_format.clear_cell}, {:neighbors, []}])
-				|> Board.update_board(board)
+			|> Board.update_board(board)
 
 		board = discover_neighbors(board, neighbors)	
 
@@ -245,12 +245,12 @@ defmodule Game do
 	defp coords_neighbors(coord_x, coord_y, limit) do
 
 		list = for x <- coord_x-1..coord_x+1,
-		      y <- coord_y-1..coord_y+1, do: {x, y}
+					y <- coord_y-1..coord_y+1, do: {x, y}
 
-		list |>
-		  Enum.filter(fn({x,y}) -> x>=1 && y>=1 end)
-		    |> Enum.filter(fn({x,y}) -> x<=limit && y<=limit end)
-		    
+		list 
+			|> Enum.filter(fn({x,y}) -> x>=1 && y>=1 end)
+			|> Enum.filter(fn({x,y}) -> x<=limit && y<=limit end)
+
 	end
 
 end

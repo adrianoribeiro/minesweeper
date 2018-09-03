@@ -22,8 +22,8 @@ defmodule PrettyPrinter do
 
 		board
 			|> get_col_value(xray: true)
-				|> Enum.chunk_every(width)
-					|> add_border()
+			|> Enum.chunk_every(width)
+			|> add_border()
 	end
 
 	@doc """
@@ -43,8 +43,8 @@ defmodule PrettyPrinter do
 
 		board
 			|> get_col_value()
-				|> Enum.chunk_every(width)
-					|> add_border()
+			|> Enum.chunk_every(width)
+			|> add_border()
 	end	
 
 	@doc """
@@ -66,7 +66,7 @@ defmodule PrettyPrinter do
 
 		board 
 			|> print_board(width, xray: true)
-				|> print_console(width)
+			|> print_console(width)
 	end
 
 	@doc """
@@ -86,7 +86,7 @@ defmodule PrettyPrinter do
 
 		board
 			|> print_board(width)
-				|> print_console(width)
+			|> print_console(width)
 	end
 
 	defp add_border([]) do
